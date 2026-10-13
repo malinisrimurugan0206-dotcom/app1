@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FF6B1A" />
+  <meta name="description" content="QuickBite – an interactive food delivery app prototype." />
+  <title>QuickBite – Food Delivery Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="device" id="device">
+    <main class="screens" id="screens">
+
+      <!-- ========== HOME ========== -->
+      <section class="screen active" id="screen-home" aria-label="Home">
+        <div class="scroll">
+          <header class="topbar">
+            <div class="loc-wrap">
+              <span class="logo-mark">Q</span>
+              <div>
+                <p class="tiny muted">Deliver to</p>
+                <p class="loc">Home · 12 Orchard Lane <span class="caret">▾</span></p>
+              </div>
+            </div>
+            <button class="icon-btn" data-action="go" data-go="cart" aria-label="Open cart">
+              <span class="ic" data-icon="cart"></span><span class="badge" data-cart-count>0</span>
+            </button>
+          </header>
+
+          <h1 class="hello">Hungry? <span>Order in minutes.</span></h1>
+
+          <label class="search">
+            <span class="ic" data-icon="search"></span>
+            <input id="searchInput" type="search" placeholder="Search restaurants or dishes" autocomplete="off" />
+          </label>
+
+          <div class="promo">
+            <div>
+              <p class="tiny">LIMITED OFFER</p>
+              <h2>Free delivery<br />on orders above ₹499</h2>
+              <p class="tiny">Fresh, fast and always hot 🔥</p>
+            </div>
+            <div class="promo-art" aria-hidden="true">🍔</div>
+          </div>
+
+          <h2 class="section-title">Categories</h2>
+          <div class="chips" id="categoryList"></div>
+
+          <div id="trendingWrap">
+            <h2 class="section-title">Trending dishes</h2>
+            <div class="hscroll" id="trendingList"></div>
+          </div>
+
+          <h2 class="section-title">Popular restaurants <small id="resCount"></small></h2>
+          <div class="rlist" id="restaurantList"></div>
+        </div>
+      </section>
+
+      <!-- ========== RESTAURANT ========== -->
+      <section class="screen" id="screen-restaurant" aria-label="Restaurant menu">
+        <div class="scroll" id="restaurantContent"></div>
+        <div class="cart-bar-wrap" id="restCartBar"></div>
+      </section>
+
+      <!-- ========== ITEM ========== -->
+      <section class="screen" id="screen-item" aria-label="Food item details">
+        <div class="scroll" id="itemContent"></div>
+        <div class="footer" id="itemFooter"></div>
+      </section>
+
+      <!-- ========== CART ========== -->
+      <section class="screen" id="screen-cart" aria-label="Shopping cart">
+        <div class="page-head">
+          <button class="icon-btn plain" data-action="back" aria-label="Back"><span class="ic" data-icon="back"></span></button>
+          <h1>My Cart</h1>
+          <span class="spacer"></span>
+        </div>
+        <div class="scroll" id="cartContent"></div>
+      </section>
+
+      <!-- ========== CHECKOUT ========== -->
+      <section class="screen" id="screen-checkout" aria-label="Checkout">
+        <div class="page-head">
+          <button class="icon-btn plain" data-action="back" aria-label="Back"><span class="ic" data-icon="back"></span></button>
+          <h1>Checkout</h1>
+          <span class="spacer"></span>
+        </div>
+        <div class="scroll" id="checkoutContent"></div>
+        <div class="footer" id="checkoutFooter"></div>
+      </section>
+
+      <!-- ========== CONFIRMATION ========== -->
+      <section class="screen" id="screen-confirm" aria-label="Order confirmation">
+        <div class="scroll" id="confirmContent"></div>
+      </section>
+    </main>
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav" id="bottomNav" aria-label="Main navigation">
+      <button class="nav-btn active" data-action="nav" data-tab="home"><span class="ic" data-icon="home"></span><span>Home</span></button>
+      <button class="nav-btn" data-action="nav" data-tab="cart">
+        <span class="ic" data-icon="cart"></span><span class="badge nav-badge" data-cart-count>0</span><span>Cart</span>
+      </button>
+      <button class="nav-btn" data-action="nav" data-tab="track"><span class="ic" data-icon="receipt"></span><span>Orders</span></button>
+    </nav>
+
+    <!-- Toast feedback -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Confirmation dialog -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-emoji">🛒</div>
+        <h3 id="modalTitle">Start a new cart?</h3>
+        <p id="modalText" class="muted"></p>
+        <div class="modal-actions">
+          <button class="btn ghost" data-action="modal-cancel">Keep current</button>
+          <button class="btn primary" data-action="modal-confirm">Start new cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
